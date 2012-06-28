@@ -2,8 +2,6 @@ var flatten = require('./index'),
     util = require('util'),
     assert = require('assert');
 
-
-
 [
   [ [1, 2, 3 ], [1, 2, 3] ],
   [ ['a', ['b', ['c']]], ['a', 'b', 'c'] ],
