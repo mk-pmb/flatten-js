@@ -4,6 +4,7 @@ A tiny utility to flatten arrays of arrays (of arrays, etc., recursively) into a
 
 ## example:
 
+```js
 > var flatten = require('flatten');
 undefined
 > flatten([1, [2, 3], [4, 5, 6], [7, [8, 9]], 10])
@@ -17,6 +18,7 @@ undefined
   8,
   9,
   10 ]
+```
 
 ## install:
 
