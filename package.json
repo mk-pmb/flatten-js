@@ -1,5 +1,5 @@
 { "name": "flatten",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Flatten arbitrarily nested arrays into a non-nested list of non-array items. Maintained for legacy compatibility.",
   "keywords": [
     "array",
