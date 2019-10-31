@@ -1,23 +1,19 @@
-module.exports = function flatten(list, depth) {
-  depth = (typeof depth == 'number') ? depth : Infinity;
-
-  if (!depth) {
-    if (Array.isArray(list)) {
-      return list.map(function(i) { return i; });
+/* -*- coding: UTF-8, tab-width: 2 -*- */
+/*jslint indent: 2, maxlen: 80, node: true */
+"use strict";
+function flatRecurs(arr, d, res) {
+  var i = 0, cur, len = arr.length;
+  for (i; i < len; i += 1) {
+    cur = arr[i];
+    if (Array.isArray(cur) && d) {
+      flatRecurs(cur, d - 1, res);
+    } else {
+      res.push(cur);
     }
-    return list;
   }
-
-  return _flatten(list, 1);
-
-  function _flatten(list, d) {
-    return list.reduce(function (acc, item) {
-      if (Array.isArray(item) && d < depth) {
-        return acc.concat(_flatten(item, d + 1));
-      }
-      else {
-        return acc.concat(item);
-      }
-    }, []);
-  }
+  return res;
+}
+module.exports = function flatten(list, depth) {
+  var parsedDepth = typeof depth === "number" ? depth : Infinity;
+  return flatRecurs(list, parsedDepth, []);
 };

@@ -16,18 +16,22 @@
     "url": "https://github.com/mk-pmb/flatten-js/issues"
   },
   "contributors": [
-    "M.K. (https://github.com/mk-pmb)"
+    "M.K. (https://github.com/mk-pmb)",
+    "James H. (https://github.com/jayy-lmao)"
   ],
 
   "private": false, "license": "MIT",
 
   "scripts": {
-    "test": "node ./test.js"
+    "lint": "jslint --edition=2013-08-26  '**/*.js'",
+    "test": "npm run lint && echo && echo 'Linter passed, start actual tests:' && nodejs test/old_tests.js"
   },
   "directories": { "test": "test" },
 
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "jslint": "^0.12.1"
+  },
   "optionalDependencies": {},
 
 
