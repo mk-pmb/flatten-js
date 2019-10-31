@@ -1,23 +1,20 @@
+/* -*- coding: UTF-8, tab-width: 2 -*- */
+/*jslint indent: 2, maxlen: 80, node: true */
+'use strict';
+
 module.exports = function flatten(list, depth) {
-  depth = (typeof depth == 'number') ? depth : Infinity;
+  depth = (typeof depth === 'number') ? depth : Infinity;
 
-  if (!depth) {
-    if (Array.isArray(list)) {
-      return list.map(function(i) { return i; });
-    }
-    return list;
-  }
-
-  return _flatten(list, 1);
-
-  function _flatten(list, d) {
+  function coreFlatten(list, d) {
     return list.reduce(function (acc, item) {
       if (Array.isArray(item) && d < depth) {
-        return acc.concat(_flatten(item, d + 1));
+        return acc.concat(coreFlatten(item, d + 1));
       }
-      else {
-        return acc.concat(item);
-      }
+      return acc.concat(item);
     }, []);
   }
+
+  if (depth > 0) { return coreFlatten(list, 1); }
+  if (Array.isArray(list)) { return list.slice(); }
+  return list;
 };
